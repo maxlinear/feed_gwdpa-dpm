@@ -16,8 +16,8 @@ PKG_PROJECT:=maxlinear
 PKG_SOURCE_NAME:=gwdpa-dpm
 CONFIG_UGW_PKG_SOURCE_URL:=ssh://git@github.com
 PKG_SOURCE_URL:=$(CONFIG_UGW_PKG_SOURCE_URL)/$(PKG_PROJECT)/$(PKG_SOURCE_NAME).git
-PKG_SOURCE_VERSION:=1.0.0.206
-PKG_MIRROR_HASH:=6e817da5c20640ba36f8fa7ad408297d4e6269d20bf374cdb6df89d58f7a9074
+PKG_SOURCE_VERSION:=1.0.0.215
+PKG_MIRROR_HASH:=2d45ce9adcbde3d847690af996d3b0f8b78e1c2b79b70c7a16ea86b64367f379
 PKG_VERSION:=$(PKG_SOURCE_VERSION)
 PKG_MAINTAINER:=dpm team
 PKG_BUILD_PARALLEL:=1
@@ -30,7 +30,7 @@ include $(INCLUDE_DIR)/package.mk
 define KernelPackage/$(PKG_NAME)
   SUBMENU:=MaxLinear
   TITLE:=datapath core/manager/library
-  DEFAULT:=y
+  DEFAULT:=y if TARGET_intel_mips_prx300||TARGET_intel_x86_lgm
   DEPENDS:= @(TARGET_intel_mips_prx300||TARGET_intel_x86_lgm)
   MAINTAINER:=dpm team
   FILES:= \
